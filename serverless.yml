@@ -1,0 +1,26 @@
+service: driver-service
+
+plugins:
+  - serverless-offline
+  - serverless-dotenv-plugin
+
+provider:
+  name: aws
+  runtime: nodejs20.x
+  stage: ${opt:stage, 'local'}
+  environment:
+    MONGO_URI: ${env:MONGO_URI}
+    KAFKA_BROKER: ${env:KAFKA_BROKER}
+    REDIS_HOST: ${env:REDIS_HOST}
+    MYSQL_HOST: ${env:MYSQL_HOST}
+    MYSQL_USER: ${env:MYSQL_USER}
+    MYSQL_PASSWORD: ${env:MYSQL_PASSWORD}
+    MYSQL_DB: ${env:MYSQL_DB}
+
+functions:
+  getDrivers:
+    handler: handler.getDrivers
+    events:
+      - http:
+          path: drivers
+          method: get

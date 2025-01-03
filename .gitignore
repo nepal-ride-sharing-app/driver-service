@@ -1,0 +1,35 @@
+# Node.js
+node_modules/
+
+# Serverless-specific
+.serverless/
+.sls-debug/
+
+# Ignore all .env files except .env.template
+.env.*
+!.env.template
+
+# Logs
+*.log
+*.json
+
+# Coverage directory for tests
+coverage/
+
+# Test output directories
+jest-test-results/
+
+# AWS credentials and configuration files
+.aws/
+.aws-sdk/
+
+# Serverless offline plugin
+offline/
+
+
+
+# MacOS
+.DS_Store
+
+# Windows
+Thumbs.db
