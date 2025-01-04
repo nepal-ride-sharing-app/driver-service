@@ -7,26 +7,21 @@ WORKDIR /app
 COPY package.json package-lock.json ./
 RUN npm install
 
+COPY . .
+EXPOSE 3000
+
 # dev Stage
 FROM base as local
-COPY ./ /app/
-EXPOSE 3000
 CMD ["npm", "run", "dev"]
 
 # dev Stage
 FROM base as dev
-COPY ./ /app/
-EXPOSE 3000
 CMD ["npm", "run", "dev"]
 
 # preprod Stage
 FROM base as preprod
-COPY ./ /app/
-EXPOSE 3000
 CMD ["npm", "run", "preprod"]
 
 # prod Stage
 FROM base as prod
-COPY ./ /app/
-EXPOSE 3000
 CMD ["npm", "run", "prod"]
