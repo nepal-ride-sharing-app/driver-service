@@ -1,10 +1,9 @@
 {
   "scripts": {
     "test": "vitest",
-    "local": "NODE_ENV=local sls offline --stage local",
-    "dev": "NODE_ENV=development sls deploy --stage dev",
-    "preprod": "NODE_ENV=preprod sls deploy --stage preprod",
-    "prod": "NODE_ENV=production sls deploy --stage prod"
+    "start:dev": "NODE_ENV=development sls offline start --stage development",
+    "start:test": "NODE_ENV=development sls deploy --stage test",
+    "start:prod": "NODE_ENV=development sls deploy --stage production"
   },
   "devDependencies": {
     "aws-sdk": "^2.1692.0",

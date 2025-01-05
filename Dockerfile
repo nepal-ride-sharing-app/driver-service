@@ -10,18 +10,17 @@ RUN npm install
 COPY . .
 EXPOSE 3000
 
-# dev Stage
-FROM base as local
-CMD ["npm", "run", "dev"]
+# command to install serverless globally
+RUN npm install -g serverless
 
 # dev Stage
-FROM base as dev
-CMD ["npm", "run", "dev"]
+FROM base as development
+CMD ["npm", "run", "start:dev"]
 
 # preprod Stage
-FROM base as preprod
-CMD ["npm", "run", "preprod"]
+FROM base as test
+CMD ["npm", "run", "start:test"]
 
 # prod Stage
-FROM base as prod
-CMD ["npm", "run", "prod"]
+FROM base as production
+CMD ["npm", "run", "start:prod"]
