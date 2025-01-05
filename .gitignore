@@ -1,8 +1,9 @@
-# Node.js
-node_modules/
+node_modules
+.serverless
 
-# Serverless-specific
-.serverless/
+dist
+logs
+
 .sls-debug/
 
 # Ignore all .env files except .env.template
