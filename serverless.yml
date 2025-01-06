@@ -2,8 +2,6 @@ org: subash1999
 app: ride-sharing-app
 service: driver-serverice
 
-useDotenv: true # Enable dotenv plugin to load environment variables from .env file
-
 provider:
   name: aws
   runtime: nodejs20.x
@@ -27,8 +25,6 @@ plugins:
   - serverless-webpack-offline-reload
 
 custom:
-  dotenv:
-    path: ./env/.env.${self:provider.stage} # Load .env file based on the stage (from env/ folder)
   localstack:
     debug: true
     stages:

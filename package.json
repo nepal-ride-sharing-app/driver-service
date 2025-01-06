@@ -6,7 +6,7 @@
     "test": "vitest",
     "build": "tsc",
     "start": "sls offline --host 0.0.0.0 --stage development",
-    "start:dev": "sls offline --host 0.0.0.0 --stage development --reloadHandler",
+    "start:dev": "NODE_ENV=development sls offline --host 0.0.0.0 --stage development --reloadHandler",
     "start:test": "npm run build && NODE_ENV=test sls deploy --stage test",
     "start:prod": "npm run build && NODE_ENV=production sls deploy --stage production",
     "dev": "npm run start:dev",
@@ -53,6 +53,7 @@
     "vitest": "^0.34.1"
   },
   "dependencies": {
+    "dotenv": "^16.4.7",
     "express-winston": "^4.2.0",
     "morgan": "^1.10.0",
     "uuid": "^11.0.3",
