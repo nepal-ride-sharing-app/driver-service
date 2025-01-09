@@ -4,7 +4,7 @@ import { Request } from 'express';
 
 const logLevel = process.env.NODE_ENV === 'development' ? 'debug' : 'info';
 
-const logger = winston.createLogger({
+const log = winston.createLogger({
   level: logLevel,
   format: winston.format.combine(
     winston.format.timestamp(),
@@ -35,4 +35,4 @@ const logger = winston.createLogger({
   ],
 });
 
-export default logger;
+export default log;

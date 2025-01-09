@@ -3,7 +3,7 @@ import { Express, Request, Response, NextFunction } from 'express';
 import expressWinston from 'express-winston';
 import morgan from 'morgan';
 import { v4 as uuidv4 } from 'uuid';
-import logger from '../utils/logger';
+import log from '../utils/logger';
 
 export const logIdMiddleware = (
   req: Request,
@@ -30,7 +30,7 @@ export const morganMiddleware = morgan((tokens, req, res) => {
 });
 
 export const expressWinstonMiddleware = expressWinston.logger({
-  winstonInstance: logger,
+  winstonInstance: log,
   meta: true,
   msg: 'HTTP {{req.method}} {{req.url}}',
   expressFormat: true,

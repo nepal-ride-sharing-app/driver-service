@@ -1,6 +1,8 @@
 import express, { Request, Response, NextFunction } from 'express';
 import initializeServer from './index';
-
+import dotenv from 'dotenv';
+    dotenv.config();
+    
 const app = express();
 
 initializeServer(app);

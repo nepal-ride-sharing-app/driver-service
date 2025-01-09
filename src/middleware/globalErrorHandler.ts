@@ -1,4 +1,5 @@
 import { Request, Response, NextFunction } from 'express';
+import log from '../utils/logger';
 
 export const globalErrorHandler = (
   err: any,
@@ -6,7 +7,7 @@ export const globalErrorHandler = (
   res: Response,
   next: NextFunction,
 ) => {
-  console.error(err.stack);
+  log.error(err.message);
   res.status(500).json({
     message: 'Internal Server Error',
     error: process.env.NODE_ENV === 'development' ? err.message : {},

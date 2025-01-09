@@ -1,12 +1,16 @@
+import bodyParser from 'body-parser';
 import { Express } from 'express';
+import globalErrorHandler from './middleware/globalErrorHandler';
 import {
+  expressWinstonMiddleware,
   logIdMiddleware,
   morganMiddleware,
-  expressWinstonMiddleware,
 } from './middleware/loggingMiddleware';
-import globalErrorHandler from './middleware/globalErrorHandler';
 
 export const setupMiddleware = (app: Express) => {
+    // Setup body-parser middleware
+    app.use(bodyParser.json());
+    
   // Setup logging middleware
   app.use(logIdMiddleware);
   app.use(morganMiddleware);
