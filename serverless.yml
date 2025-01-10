@@ -9,7 +9,20 @@ provider:
   region: us-east-1
   environment:
     NODE_ENV: ${env:NODE_ENV, 'development'} # Reference the environment variable from .env file
-    SERVERLESS_ACCESS_KEY: AK31C6gtUVB7De2HmcBCTDOYwVY5nXoHNIeyx2xjVnDvh
+    # SERVERLESS_ACCESS_KEY: ${env:SERVERLESS_ACCESS_KEY}
+    APP_NAME: ${env:APP_NAME, 'driver-service'}
+    APP_URL: ${env:APP_URL, 'http://localhost:3000'}
+    APP_PORT: ${env:APP_PORT, '3000'}
+    AWS_REGION: ${env:AWS_REGION, 'us-east-1'}
+    AWS_ACCESS_KEY_ID: ${env:AWS_ACCESS_KEY_ID, 'test'}
+    AWS_SECRET_ACCESS_KEY: ${env:AWS_SECRET_ACCESS_KEY, 'test'}
+    AWS_ENDPOINT: ${env:AWS_ENDPOINT, 'http://localhost:4566'}
+    KAFKA_BROKER: ${env:KAFKA_BROKER, 'localhost:9092'}
+    KAFKA_CLIENT_ID: ${env:KAFKA_CLIENT_ID, 'driver-service'}
+    KAFKA_GROUP_ID: ${env:KAFKA_GROUP_ID, 'driver-service-group'}
+    KAFKA_TOPIC: ${env:KAFKA_TOPIC, 'kafka-test'}
+    KAFKA_SECURITY_PROTOCOL: ${env:KAFKA_SECURITY_PROTOCOL, 'PLAINTEXT'}
+    LOG_LEVEL: ${env:LOG_LEVEL, 'debug'}
 
 functions:
   api:

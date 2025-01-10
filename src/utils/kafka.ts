@@ -6,9 +6,6 @@ import {
   EachMessagePayload,
   Partitioners,
 } from 'kafkajs';
-import dotenv from 'dotenv';
-
-dotenv.config();
 
 const kafka = new Kafka({
   clientId: process.env.KAFKA_CLIENT_ID,

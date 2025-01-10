@@ -1,7 +1,7 @@
 import fs from 'fs';
 import path from 'path';
 
-const countFilePath = path.resolve(__dirname, '../../data/count.json');
+const countFilePath = path.resolve(__dirname, '../../data/kafka_message_count.json');
 
 export const getCount = (): number => {
     if (fs.existsSync(countFilePath)) {

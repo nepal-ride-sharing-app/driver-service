@@ -1,8 +1,9 @@
-import express, { Request, Response, NextFunction } from 'express';
+import express from 'express';
 import initializeServer from './index';
-import dotenv from 'dotenv';
-    dotenv.config();
-    
+import dotenvx from '@dotenvx/dotenvx';
+
+dotenvx.config();
+
 const app = express();
 
 initializeServer(app);

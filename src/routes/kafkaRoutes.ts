@@ -1,6 +1,6 @@
 import { Router, Request, Response } from 'express';
 import { produceMessage, consumeMessages, stopConsumer } from '../utils/kafka';
-import { getCount, incrementCount } from '../utils/countManager';
+import { getCount, incrementCount } from '../utils/kafkaMessageCountManager';
 
 const router = Router();
 
@@ -31,7 +31,10 @@ router.post('/produce', async (req: Request, res: Response) => {
   try {
     const count = getCount();
     const messageWithCount = `${message}, index: ${count}`;
-    const result = await produceMessage(topic as string, messageWithCount as string);
+    const result = await produceMessage(
+      topic as string,
+      messageWithCount as string,
+    );
     incrementCount();
     res
       .status(200)
@@ -57,6 +60,19 @@ router.post('/produce', async (req: Request, res: Response) => {
  *     responses:
  *       200:
  *         description: Consuming messages...
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 status:
+ *                   type: string
+ *                   example: Consuming messages...
+ *                 messages:
+ *                   type: array
+ *                   items:
+ *                         type: string
+ *                         example: "Message content"
  *       500:
  *         description: Error consuming messages
  */
