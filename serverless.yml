@@ -17,6 +17,14 @@ provider:
     AWS_ACCESS_KEY_ID: ${env:AWS_ACCESS_KEY_ID, 'test'}
     AWS_SECRET_ACCESS_KEY: ${env:AWS_SECRET_ACCESS_KEY, 'test'}
     AWS_ENDPOINT: ${env:AWS_ENDPOINT, 'http://localhost:4566'}
+    REDIS_HOST: ${env:REDIS_HOST, 'localhost'}
+    REDIS_PORT: ${env:REDIS_PORT, '6379'}
+    REDIS_PASSWORD: ${env:REDIS_PASSWORD, 'your_redis_password'}
+    REDIS_DB: ${env:REDIS_DB, '0'}
+    MYSQL_HOST: ${env:MYSQL_HOST, 'localhost'}
+    MYSQL_USER: ${env:MYSQL_USER, 'root'}
+    MYSQL_PASSWORD: ${env:MYSQL_PASSWORD, 'password'}
+    MYSQL_DATABASE: ${env:MYSQL_DATABASE, 'test'}
     KAFKA_BROKER: ${env:KAFKA_BROKER, 'localhost:9092'}
     KAFKA_CLIENT_ID: ${env:KAFKA_CLIENT_ID, 'driver-service'}
     KAFKA_GROUP_ID: ${env:KAFKA_GROUP_ID, 'driver-service-group'}

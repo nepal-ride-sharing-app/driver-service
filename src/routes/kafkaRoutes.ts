@@ -6,9 +6,17 @@ const router = Router();
 
 /**
  * @swagger
+ * tags:
+ *   - name: Kafka
+ *     description: Kafka operations
+ */
+
+/**
+ * @swagger
  * /kafka/produce:
  *   post:
  *     summary: Produce a message to Kafka, The message will be appended with the current count
+ *     tags: [Kafka]
  *     requestBody:
  *       required: true
  *       content:
@@ -50,6 +58,7 @@ router.post('/produce', async (req: Request, res: Response) => {
  * /kafka/consume:
  *   get:
  *     summary: Consume messages from Kafka
+ *     tags: [Kafka]
  *     parameters:
  *       - in: query
  *         name: topic

@@ -1,3 +1,0 @@
-{
-  "AWS::ApiGateway::RestApi": "http://localstack:4566"
-}

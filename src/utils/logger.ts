@@ -17,7 +17,6 @@ const getNestedReq = (obj: any): any => {
   return null;
 };
 
-
 const log = winston.createLogger({
   level: logLevel,
   format: winston.format.combine(
@@ -28,7 +27,7 @@ const log = winston.createLogger({
         const { timestamp, level, message, meta } = info;
         const req = getNestedReq(meta);
         const logId = req?.headers['logid'] || '';
-        const spanId =req?.headers['spanid'] || '';
+        const spanId = req?.headers['spanid'] || '';
         return JSON.stringify({
           timestamp,
           level,

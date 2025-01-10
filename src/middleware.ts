@@ -8,9 +8,9 @@ import {
 } from './middleware/loggingMiddleware';
 
 export const setupMiddleware = (app: Express) => {
-    // Setup body-parser middleware
-    app.use(bodyParser.json());
-    
+  // Setup body-parser middleware
+  app.use(bodyParser.json());
+
   // Setup logging middleware
   app.use(logIdMiddleware);
   app.use(morganMiddleware);
