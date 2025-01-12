@@ -27,7 +27,7 @@ router.get('/set', async (req: Request, res: Response) => {
     await setValue('exampleKey', 'exampleValue');
     res.status(200).send('Value set successfully');
   } catch (error) {
-    res.status(500).send(`Error setting value: ${error.message}`);
+    res.status(500).send(`Error setting value: ${(error as Error).message}`);
   }
 });
 
@@ -53,7 +53,7 @@ router.get('/get', async (req: Request, res: Response) => {
     const value = await getValue('exampleKey');
     res.status(200).send(`Value: ${value}`);
   } catch (error) {
-    res.status(500).send(`Error getting value: ${error.message}`);
+    res.status(500).send(`Error getting value: ${(error as Error).message}`);
   }
 });
 
@@ -74,7 +74,7 @@ router.get('/delete', async (req: Request, res: Response) => {
     await deleteKey('exampleKey');
     res.status(200).send('Key deleted successfully');
   } catch (error) {
-    res.status(500).send(`Error deleting key: ${error.message}`);
+    res.status(500).send(`Error deleting key: ${(error as Error).message}`);
   }
 });
 

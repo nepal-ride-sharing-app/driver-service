@@ -5,21 +5,46 @@ import {
   Consumer,
   EachMessagePayload,
   Partitioners,
+  logLevel,
 } from 'kafkajs';
+import fs from 'fs';
+import { isDevelopmentMode } from './helper';
 
-const kafka = new Kafka({
+const kafkaConfig: any = {
   clientId: process.env.KAFKA_CLIENT_ID,
   brokers: (process.env.KAFKA_BROKER || '').split(','),
-  //   ssl: true,
-  //   sasl:
-  //     process.env.KAFKA_SASL_USERNAME && process.env.KAFKA_SASL_PASSWORD
-  //       ? {
-  //           mechanism: process.env.KAFKA_SASL_MECHANISM as 'plain', // 'plain' is the only supported mechanism for now
-  //           username: process.env.KAFKA_SASL_USERNAME,
-  //           password: process.env.KAFKA_SASL_PASSWORD,
-  //         }
-  //       : undefined,
-});
+  logLevel: logLevel.INFO,
+};
+
+if (!isDevelopmentMode()) {
+  kafkaConfig.ssl = {
+    rejectUnauthorized: false,
+    ca: [
+      fs.readFileSync(
+        process.env.KAFKA_SSL_CA_CERT_PATH ||
+          '/etc/driver-service/certs/ca.crt',
+        'utf-8',
+      ),
+    ],
+    key: fs.readFileSync(
+      process.env.KAFKA_SSL_CLIENT_KEY_PATH ||
+        '/etc/driver-service/certs/client.key',
+      'utf-8',
+    ),
+    cert: fs.readFileSync(
+      process.env.KAFKA_SSL_CLIENT_CERT_PATH ||
+        '/etc/driver-service/certs/client.crt',
+      'utf-8',
+    ),
+  };
+  kafkaConfig.sasl = {
+    mechanism: 'scram-sha-512',
+    username: process.env.KAFKA_SASL_USERNAME || 'user',
+    password: process.env.KAFKA_SASL_PASSWORD || 'password',
+  };
+}
+
+const kafka = new Kafka(kafkaConfig);
 
 const producer: Producer = kafka.producer({
   createPartitioner: Partitioners.LegacyPartitioner,

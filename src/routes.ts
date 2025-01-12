@@ -1,11 +1,18 @@
 import { Express, NextFunction, Request, Response } from 'express';
 import kafkaRoutes from './routes/kafkaRoutes';
 import swaggerRoutes from './routes/swaggerRoutes';
+import dbRoutes from './routes/dbRoutes';
+import redisRoutes from './routes/redisRouter';
 
 export const setupRoutes = (app: Express) => {
+  // swagger routes
+  app.use('/', swaggerRoutes);
   // kafka routes
   app.use('/kafka', kafkaRoutes);
-  app.use('/', swaggerRoutes);
+  // mysql database routes
+  app.use('/db', dbRoutes);
+  // redis routes
+  app.use('/redis', redisRoutes);
 
   app.get('/', (req: Request, res: Response, next: NextFunction) => {
     res.status(200).json({

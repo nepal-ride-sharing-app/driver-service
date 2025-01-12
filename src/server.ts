@@ -1,8 +1,5 @@
 import express from 'express';
 import initializeServer from './index';
-import dotenvx from '@dotenvx/dotenvx';
-
-dotenvx.config();
 
 const app = express();
 

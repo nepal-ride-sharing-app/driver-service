@@ -1,19 +1,39 @@
-import mysql from 'mysql2/promise';
+import mysql, { Connection } from 'mysql2/promise';
 import log from './logger';
 
-// Create a MySQL connection pool
-const pool = mysql.createPool({
+// MySQL configuration
+const mysqlConfig = {
   host: process.env.MYSQL_HOST || 'localhost',
+  port: parseInt(process.env.MYSQL_PORT || '3306', 10),
   user: process.env.MYSQL_USER || 'root',
   password: process.env.MYSQL_PASSWORD || 'password',
-  database: process.env.MYSQL_DATABASE || 'test',
+  database: process.env.MYSQL_DATABASE || 'ride-sharing-app',
   waitForConnections: true,
   connectionLimit: 10,
   queueLimit: 0,
-});
+};
+
+let connection: Connection | null = null;
 
 /**
- * Executes a SQL query using a connection from the pool.
+ * Initializes the MySQL connection if it hasn't been initialized yet.
+ *
+ * @returns {Promise<Connection>} - A promise that resolves to the MySQL connection.
+ */
+const initializeConnection = async (): Promise<Connection> => {
+  if (!connection) {
+    try {
+      connection = await mysql.createConnection(mysqlConfig);
+    } catch (error) {
+      log.error('Error creating MySQL connection: ' + JSON.stringify(error));
+      throw error;
+    }
+  }
+  return connection;
+};
+
+/**
+ * Executes a SQL query using the MySQL connection.
  *
  * @param {string} query - The SQL query to be executed.
  * @param {any[]} [params=[]] - An array of parameters to be passed to the query.
@@ -21,15 +41,12 @@ const pool = mysql.createPool({
  * @throws {Error} - Throws an error if the query execution fails.
  */
 export const runQuery = async (query: string, params: any[] = []) => {
-  let connection;
   try {
-    connection = await pool.getConnection();
-    const [results] = await connection.execute(query, params);
+    const conn = await initializeConnection();
+    const [results] = await conn.execute(query, params);
     return results;
   } catch (error) {
-    log.error('Error running query:', error);
+    log.error('Error running query:' + JSON.stringify(error));
     throw error;
-  } finally {
-    if (connection) connection.release();
   }
 };

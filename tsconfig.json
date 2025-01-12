@@ -1,0 +1,17 @@
+{
+  "compilerOptions": {
+    "target": "ES2021",
+    "module": "CommonJS",
+    "strict": true,
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
+    "skipLibCheck": true,
+    "moduleResolution": "node",
+    "outDir": "dist",
+    "baseUrl": ".",
+    "typeRoots": ["**/*.d.ts", "./node_modules/@types"], // Specify custom types folder and default types
+
+    "types": [] // Include default types
+  },
+  "include": ["handler.ts", "src/**/*.ts", "index.ts", "types"]
+}
