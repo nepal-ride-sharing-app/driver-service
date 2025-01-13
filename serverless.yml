@@ -25,10 +25,16 @@ provider:
     MYSQL_USER: ${env:MYSQL_USER, 'root'}
     MYSQL_PASSWORD: ${env:MYSQL_PASSWORD, 'password'}
     MYSQL_DATABASE: ${env:MYSQL_DATABASE, 'test'}
+    MONGO_HOST: ${env:MONGO_HOST, 'localhost'}
+    MONGO_PORT: ${env:MONGO_PORT, '27017'}
+    MONGO_USER: ${env:MONGO_USER, 'user'}
+    MONGO_PASSWORD: ${env:MONGO_PASSWORD, 'password'}
+    MONGO_DATABASE: ${env:MONGO_DATABASE, 'ride-sharing-app'}
     KAFKA_BROKER: ${env:KAFKA_BROKER, 'localhost:9093'}
     KAFKA_CLIENT_ID: ${env:KAFKA_CLIENT_ID, 'driver-service'}
     KAFKA_GROUP_ID: ${env:KAFKA_GROUP_ID, 'driver-service-group'}
     KAFKA_TOPIC: ${env:KAFKA_TOPIC, 'driver-service-topic'}
+    KAFKA_SSL: ${env:KAFKA_SSL, 'true'} # when true, use SSL no matter which environment, when false, use SSL only in production
     KAFKA_SASL_USERNAME: ${env:KAFKA_SASL_USERNAME, 'user'}
     KAFKA_SASL_PASSWORD: ${env:KAFKA_SASL_PASSWORD, 'password'}
     KAFKA_SSL_CA_CERT_PATH: ${env:KAFKA_SSL_CA_CERT_PATH, 'certs/ca.crt'}

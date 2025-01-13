@@ -1,13 +1,14 @@
 import { Express } from 'express';
-import setupMiddleware from './middleware';
+import {
+  appSetupAfterRoutesAndMiddleware,
+  appSetupBeforeRoutesAndMiddleware,
+} from 'ride-sharing-app-common';
 import setupRoutes from './routes';
 
 export const initializeServer = (app: Express) => {
-  // setup middleware for the app
-  setupMiddleware(app);
-
-  // setup routes for the app
+  appSetupBeforeRoutesAndMiddleware(app);
   setupRoutes(app);
+  appSetupAfterRoutesAndMiddleware(app);
 };
 
 export default initializeServer;

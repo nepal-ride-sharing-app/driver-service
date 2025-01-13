@@ -13,5 +13,5 @@
 
     "types": [] // Include default types
   },
-  "include": ["handler.ts", "src/**/*.ts", "index.ts", "types"]
+  "include": ["handler.ts", "src/**/*.ts", "index.ts", "src/types"]
 }
