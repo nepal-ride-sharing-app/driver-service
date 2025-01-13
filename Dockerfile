@@ -15,12 +15,12 @@ RUN npm install -g serverless
 
 # dev Stage
 FROM base as development
-CMD ["npm", "run", "start:dev"]
+CMD ["npm", "run", "start:express:dev"]
 
 # preprod Stage
 FROM base as test
-CMD ["npm", "run", "start:test"]
+CMD ["npm", "run", "start:express:test"]
 
 # prod Stage
 FROM base as production
-CMD ["npm", "run", "start:prod"]
+CMD ["npm", "run", "start:express:prod"]
