@@ -2,7 +2,9 @@
   "watch": [
     "src",
     "node_modules/ride-sharing-app-common/*",
-    "../../ride-sharing-app-common/dist"
+    "../../ride-sharing-app-common/dist",
+    "/app",
+    "/app/node_modules/ride-sharing-app-common/"
   ],
   "ext": "ts,js,json",
   "ignore": ["dist"],
