@@ -15,7 +15,7 @@
     "dev:offline": "npm run start:dev",
     "prod": "npm run start:prod",
     "deploy": "npm run build && sls deploy",
-    "start:express:dev": "dotenvx run -f .env.development -- nodemon --config nodemon.json",
+    "start:express:dev": "nodemon --config nodemon.json",
     "dev:express": "npm run start:express:dev",
     "express:dev": "npm run start:express:dev",
     "serve": "npm run start:express:dev",
@@ -56,6 +56,7 @@
     "vitest": "^0.34.1"
   },
   "dependencies": {
+    "@subash1999/ride-sharing-app-common": "latest",
     "@dotenvx/dotenvx": "^1.32.1",
     "body-parser": "^1.20.3",
     "express-winston": "^4.2.0",
@@ -63,7 +64,6 @@
     "kafkajs": "^2.2.4",
     "morgan": "^1.10.0",
     "mysql2": "^3.12.0",
-    "ride-sharing-app-common": "file:../../ride-sharing-app-common",
     "swagger-jsdoc": "^6.2.8",
     "swagger-ui-express": "^5.0.1",
     "uuid": "^11.0.3",

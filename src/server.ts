@@ -1,14 +1,16 @@
-import express from 'express';
-import initializeServer from './index';
+import { Express } from 'express';
+import {
+  appSetupAfterRoutesAndMiddleware,
+  appSetupBeforeRoutesAndMiddleware,
+} from '@subash1999/ride-sharing-app-common';
+import setupRoutes from './routes';
+import setupMiddleware from './middleware';
 
-const app = express();
+export const initializeServer = (app: Express) => {
+  appSetupBeforeRoutesAndMiddleware(app);
+  setupRoutes(app);
+  setupMiddleware(app);
+  appSetupAfterRoutesAndMiddleware(app);
+};
 
-initializeServer(app);
-
-const PORT = process.env.APP_PORT || 3000;
-
-app.listen(PORT, () => {
-  console.log(`Server is running on port ${PORT}`);
-});
-
-export default app;
+export default initializeServer;

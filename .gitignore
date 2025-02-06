@@ -33,3 +33,5 @@ offline/
 
 # Windows
 Thumbs.db
+
+.npmrc

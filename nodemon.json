@@ -1,12 +1,12 @@
 {
   "watch": [
-    "src",
-    "node_modules/ride-sharing-app-common/*",
-    "../../ride-sharing-app-common/dist",
-    "/app",
-    "/app/node_modules/ride-sharing-app-common/"
+    "**/*",
+    "node_modules/@subash1999/ride-sharing-app-common/*",
+    "../../libraries/compiled/",
+    "."
   ],
   "ext": "ts,js,json",
   "ignore": ["dist"],
-  "exec": "ts-node --transpile-only ./src/server.ts"
+  "exec": "ts-node --transpile-only ./src/index.ts",
+  "legacyWatch": true
 }

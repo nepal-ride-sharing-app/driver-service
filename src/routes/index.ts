@@ -1,6 +1,9 @@
 import { Router, Request, Response, NextFunction } from 'express';
-import { isProductionMode, isTestMode } from 'ride-sharing-app-common';
-import { isDevelopmentMode } from 'ride-sharing-app-common/src/utils/helpers';
+import {
+  isProductionMode,
+  isTestMode,
+} from '@subash1999/ride-sharing-app-common';
+import { isDevelopmentMode } from '@subash1999/ride-sharing-app-common/utils/helpers';
 
 const router = Router();
 
@@ -59,6 +62,51 @@ router.get('/', (req: Request, res: Response, next: NextFunction) => {
 router.get('/hello', (req: Request, res: Response, next: NextFunction) => {
   res.status(200).json({
     message: 'Hello from path!',
+  });
+});
+
+/**
+ * @swagger
+ * /env:
+ *   get:
+ *     summary: Get environment variable values
+ *     tags: [Env]
+ *     parameters:
+ *       - in: query
+ *         name: variables
+ *         schema:
+ *           type: array
+ *           items:
+ *             type: string
+ *         description: Single environment variable or an array of environment variables
+ *     responses:
+ *       200:
+ *         description: Returns the values of the requested environment variables and the path of the loaded env file.
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 envFilePath:
+ *                   type: string
+ *                 values:
+ *                   type: array
+ *                   items:
+ *                     type: string
+ */
+router.get('/env', (req: Request, res: Response) => {
+  const variables = req.query.variables as string | string[];
+  const envVariables = Array.isArray(variables)
+    ? variables
+    : [variables].filter(Boolean);
+  const values = envVariables.map((variable) =>
+    process.env[variable as string] !== undefined
+      ? process.env[variable as string]
+      : undefined,
+  );
+
+  res.status(200).json({
+    values,
   });
 });
 

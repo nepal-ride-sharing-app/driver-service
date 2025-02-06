@@ -1,16 +1,17 @@
-import { Express } from 'express';
-import {
-  appSetupAfterRoutesAndMiddleware,
-  appSetupBeforeRoutesAndMiddleware,
-} from 'ride-sharing-app-common';
-import setupRoutes from './routes';
-import setupMiddleware from './middleware';
+import dotenvx from '@dotenvx/dotenvx';
+dotenvx.config();
 
-export const initializeServer = (app: Express) => {
-  appSetupBeforeRoutesAndMiddleware(app);
-  setupRoutes(app);
-  setupMiddleware(app);
-  appSetupAfterRoutesAndMiddleware(app);
-};
+import express from 'express';
+import initializeServer from './server';
 
-export default initializeServer;
+const app = express();
+
+initializeServer(app);
+
+const PORT = process.env.APP_PORT || 3000;
+
+app.listen(PORT, () => {
+  console.log(`Server is running on port ${PORT}`);
+});
+
+export default app;

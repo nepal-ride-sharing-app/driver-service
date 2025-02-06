@@ -1,6 +1,6 @@
 import express from 'express';
 import serverless from 'serverless-http';
-import initializeServer from './src';
+import initializeServer from './src/server';
 
 const app = express();
 
