@@ -35,3 +35,5 @@ offline/
 Thumbs.db
 
 .npmrc
+
+certs
