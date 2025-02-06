@@ -1,9 +1,6 @@
 import { Router, Request, Response, NextFunction } from 'express';
-import {
-  isProductionMode,
-  isTestMode,
-} from '@nepal-ride-sharing-app/ride-sharing-app-common';
-import { isDevelopmentMode } from '@nepal-ride-sharing-app/ride-sharing-app-common/utils/helpers';
+import { isProductionMode, isTestMode } from '@nepal-ride-sharing-app/common';
+import { isDevelopmentMode } from '@nepal-ride-sharing-app/common/utils/helpers';
 
 const router = Router();
 
