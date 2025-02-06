@@ -2,7 +2,7 @@ import { Express } from 'express';
 import {
   appSetupAfterRoutesAndMiddleware,
   appSetupBeforeRoutesAndMiddleware,
-} from '@subash1999/ride-sharing-app-common';
+} from '@nepal-ride-sharing-app/ride-sharing-app-common';
 import setupRoutes from './routes';
 import setupMiddleware from './middleware';
 

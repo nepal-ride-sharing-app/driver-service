@@ -1,7 +1,7 @@
 {
   "watch": [
     "**/*",
-    "node_modules/@subash1999/ride-sharing-app-common/*",
+    "node_modules/@nepal-ride-sharing-app/ride-sharing-app-common/*",
     "../../libraries/compiled/",
     "."
   ],

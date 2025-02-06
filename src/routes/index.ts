@@ -2,8 +2,8 @@ import { Router, Request, Response, NextFunction } from 'express';
 import {
   isProductionMode,
   isTestMode,
-} from '@subash1999/ride-sharing-app-common';
-import { isDevelopmentMode } from '@subash1999/ride-sharing-app-common/utils/helpers';
+} from '@nepal-ride-sharing-app/ride-sharing-app-common';
+import { isDevelopmentMode } from '@nepal-ride-sharing-app/ride-sharing-app-common/utils/helpers';
 
 const router = Router();
 
