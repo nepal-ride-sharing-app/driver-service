@@ -2,7 +2,7 @@ import { Express } from 'express';
 import {
   appSetupAfterRoutesAndMiddleware,
   appSetupBeforeRoutesAndMiddleware,
-} from '@nepal-ride-sharing-app/common';
+} from '@nrsa/common/express-common/utils/initializeServer';
 import setupRoutes from './routes';
 import setupMiddleware from './middleware';
 
