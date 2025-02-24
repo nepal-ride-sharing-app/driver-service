@@ -2,7 +2,7 @@ import { Express } from 'express';
 import {
   appSetupAfterRoutesAndMiddleware,
   appSetupBeforeRoutesAndMiddleware,
-} from '@nrsa/common/service-common/utils/initializeServer';
+} from '@nrsa/common/express-app/utils/initializeServer';
 import setupRoutes from './routes';
 import setupMiddleware from './middleware';
 

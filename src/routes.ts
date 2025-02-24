@@ -1,9 +1,13 @@
-import { Express, NextFunction, Request, Response } from 'express';
-import { isDevelopmentMode } from '@nrsa/common/shared-common/utils/helpers';
-import indexRoutes from './routes/index';
+import { Express } from 'express';
+import testingPurposeRoutes from './routes/testingPurposeRoutes';
+import swaggerRoutes from './routes/swaggerRoutes';
+import { isDevelopmentMode } from './utils/helpers';
 
 export const setupRoutes = (app: Express) => {
-  app.use('/', indexRoutes);
+  if (isDevelopmentMode()) {
+    app.use('/swagger', swaggerRoutes);
+    app.use('/testing-purpose', testingPurposeRoutes);
+  }
 };
 
 export default setupRoutes;

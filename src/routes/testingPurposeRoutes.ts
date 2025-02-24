@@ -1,9 +1,9 @@
 import { Router, Request, Response, NextFunction } from 'express';
 import {
+  isDevelopmentMode,
   isProductionMode,
   isTestMode,
-} from '@nrsa/common/shared-common/utils/helpers';
-import { isDevelopmentMode } from '@nrsa/common/shared-common/utils/helpers';
+} from '../utils/helpers';
 
 const router = Router();
 
@@ -11,12 +11,12 @@ const router = Router();
  * @swagger
  * tags:
  *   - name: Test
- *     description: Test Routes
+ *     description: Routes using for testing purposes
  */
 
 /**
  * @swagger
- * /:
+ * /testing-purpose/:
  *   get:
  *     summary: Root endpoint
  *     tags: [Test]
@@ -44,7 +44,7 @@ router.get('/', (req: Request, res: Response, next: NextFunction) => {
 
 /**
  * @swagger
- * /hello:
+ * /testing-purpose/hello:
  *   get:
  *     summary: Hello endpoint
  *     tags: [Test]
@@ -67,7 +67,7 @@ router.get('/hello', (req: Request, res: Response, next: NextFunction) => {
 
 /**
  * @swagger
- * /env:
+ * /testing-purpose/env:
  *   get:
  *     summary: Get environment variable values
  *     tags: [Env]
@@ -112,7 +112,7 @@ router.get('/env', (req: Request, res: Response) => {
 
 /**
  * @swagger
- * /test-not-found:
+ * /testing-purpose/test-not-found:
  *   get:
  *     summary: Test Not Found endpoint
  *     tags: [Test]
